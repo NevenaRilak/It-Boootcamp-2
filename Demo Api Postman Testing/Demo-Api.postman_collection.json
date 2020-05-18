@@ -1,0 +1,3851 @@
+{
+	"info": {
+		"_postman_id": "3538851e-a943-4e6d-ab1d-7e5cc93205f3",
+		"name": "Demo-Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "/home",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e212e718-1c76-4ea4-b5c3-af32361bcbe2",
+								"exec": [
+									"pm.test(\"It should GET home API url\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"postman.setNextRequest(); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}",
+							"host": [
+								"{{api_home}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/token (unauthorized)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "591a9771-bf98-4d48-b576-59af93c16741",
+								"exec": [
+									"pm.test(\"It should NOT be able to consume the route- no token sent\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/token",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ee7b933a-51a9-4f6b-9136-05814f161d50",
+								"exec": [
+									"/*pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});*/",
+									"",
+									"const response = pm.response.json();",
+									"pm.test(\"It should GET token\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response.user).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"user\");",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"}",
+									");",
+									"",
+									"pm.environment.set(\"token\", response.token);",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/login"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{Login}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{LogInPass}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/login",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authority",
+										"value": "api-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "origin",
+										"value": "https://vue-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "https://vue-demo.daniel-avellaneda.com/login"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{Login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{LogInPass}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_home}}/login",
+									"host": [
+										"{{api_home}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 14 May 2020 03:16:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-RrPGEol7B49UjNoktcmXmZgv3bc\""
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "5931766d3a4ad43b-BUD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "cf-request-id",
+									"value": "02b2c8583e0000d43bd72d5200000001"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"e372b1b2292d0d9e6ba452d2d8a3e5f58079b8342bd68cc76b7ad5c9e569f2c8a0135fcc033c038e2a12912749784dd8c5d31aa4e8513cad2ee5f858fb1458c23a5b88718035b2f16e56ba0a5220a5f5bf6606854d6b076be9a68610b2ced7a9f9dd58ba797bc50bdad0729beadceaf0ebbc3678b483b5e6376f504a1b41143558b901e9a85e44d73904deba1d0851f97c6862ba262e361303cfd4cfb66273a23caa5aab86f9f1f06da1caf2073b45580d06c72996e2aff0fc6ce18b3cf66764\",\n    \"user\": {\n        \"_id\": \"5aa1c2c35ef7a4e97b5e995a\",\n        \"name\": \"Super Administrator\",\n        \"email\": \"admin@admin.com\",\n        \"role\": \"admin\",\n        \"verified\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0f1de0e6-95c9-4944-b5ee-6e0033b5e80a",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should GET a fresh token\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"    //pm.expect(response.token).to.not.eql(pm.environment.get(\"token\"));",
+									"",
+									"});",
+									"pm.environment.set(\"freshToken\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/token",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "23cedcba-9ea7-4043-9fc9-748d8044d1a0",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should POST register\", function () {",
+									"    pm.response.to.have.status(201);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"user\");",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"    pm.environment.set(\"tokenReg\", response.token);",
+									"    pm.environment.set(\"regUserID\", response.user._id);",
+									"    pm.environment.set(\"email\", response.user.email);",
+									"",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "247c4b4c-e0d2-4364-95f9-c145d18cac58",
+								"exec": [
+									"var freshEmail = Math.random().toString(36).substring(2,11) + '@domain.com';",
+									"pm.environment.set(\"email\", freshEmail);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/signup"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{name1}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/register",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/register existing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3354ce56-d724-40d5-b471-bc6852d0e198",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should not POST register if email already exists\", function () {",
+									"    pm.response.to.have.status(422);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property('errors');",
+									"    pm.expect(response.errors).to.have.property('msg');",
+									"    pm.expect(response.errors.msg).to.be.a('string');",
+									"    pm.expect(response.errors.msg).to.equal('EMAIL_ALREADY_EXISTS');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/signup"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{admin}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/register",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65b08be7-fd11-4021-8a4b-f0600cdc07f3",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should GET profile\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"email\");",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"});",
+									"pm.environment.set(\"verification\", response.verification);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenReg}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/profile",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/verify",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a91eb018-c491-44fd-9f37-b453b9344428",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should POST verify\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"email\");",
+									"    pm.expect(response).to.have.property(\"verified\");",
+									"    pm.expect(response.verified).to.be.true;",
+									"",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/signup"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "{{verification}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/verify",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/forgot",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6d444b09-9a5b-415c-89a2-41d593207cb4",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"msg\");",
+									"    pm.expect(response).to.have.property(\"verification\");",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/signup"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/forgot",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/reset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d5672be4-bb39-4c4d-81ca-fe7c97b56922",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"msg\");",
+									"    pm.expect(respone.msg).to.eql(\"PASSWORD_CHANGED\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/forgot"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "{{verification}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/reset",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"reset"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "City",
+			"item": [
+				{
+					"name": "/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b00d381c-6938-4ad7-9818-e267186b0bc0",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.test(\"It should GET token (city)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"user\");",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"}",
+									");",
+									"",
+									"pm.environment.set(\"token\", response.token);",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/login"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{Login}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{LogInPass}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/login",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authority",
+										"value": "api-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "origin",
+										"value": "https://vue-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "https://vue-demo.daniel-avellaneda.com/login"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{Login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{LogInPass}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_home}}/login",
+									"host": [
+										"{{api_home}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 14 May 2020 03:16:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-RrPGEol7B49UjNoktcmXmZgv3bc\""
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "5931766d3a4ad43b-BUD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "cf-request-id",
+									"value": "02b2c8583e0000d43bd72d5200000001"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"e372b1b2292d0d9e6ba452d2d8a3e5f58079b8342bd68cc76b7ad5c9e569f2c8a0135fcc033c038e2a12912749784dd8c5d31aa4e8513cad2ee5f858fb1458c23a5b88718035b2f16e56ba0a5220a5f5bf6606854d6b076be9a68610b2ced7a9f9dd58ba797bc50bdad0729beadceaf0ebbc3678b483b5e6376f504a1b41143558b901e9a85e44d73904deba1d0851f97c6862ba262e361303cfd4cfb66273a23caa5aab86f9f1f06da1caf2073b45580d06c72996e2aff0fc6ce18b3cf66764\",\n    \"user\": {\n        \"_id\": \"5aa1c2c35ef7a4e97b5e995a\",\n        \"name\": \"Super Administrator\",\n        \"email\": \"admin@admin.com\",\n        \"role\": \"admin\",\n        \"verified\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/cities (unauthorized)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "603e5bf0-1d55-40ca-94e7-6e28ed5ba3a3",
+								"exec": [
+									"pm.test(\"It should not be able to consume the route - no token sent\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/cities",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d3c9164-3daa-49ff-9bae-d09e82a6d5c6",
+								"exec": [
+									"pm.test(\"It should get all the cities\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response.docs).to.be.a('array');",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/cities",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities/all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5dba124c-a5f1-4d8f-afe9-97616f9ebced",
+								"exec": [
+									"pm.test(\"It should get all the cities\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('array');",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/cities/all",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities?filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3387584-f463-4396-8195-251a3a4bc25f",
+								"exec": [
+									"pm.test(\"It should GET the cities with filters\", function () {",
+									"  pm.response.to.have.status(200);",
+									"  const response = pm.response.json();",
+									"  pm.expect(response).to.be.a('object');",
+									"  pm.expect(response.docs).to.be.a('array');",
+									"",
+									"  pm.expect(response.docs).to.have.lengthOf(1);",
+									"  pm.expect(response.docs[0]).to.have.property(\"name\");",
+									"  pm.expect(response.docs[0].name).to.equal(pm.environment.get(\"filterName\"));",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/cities?filter={{filterName}}&fields=name",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{{filterName}}"
+								},
+								{
+									"key": "fields",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8ef8e05-b173-4254-9267-168a71c46287",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should post city\", function () {",
+									"    pm.response.to.have.status(201);",
+									"",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"    pm.expect(response).to.have.property(\"_id\");",
+									"",
+									"});",
+									"pm.environment.set(\"cityID\", response._id);",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "3d03ec41-6a83-4f95-8988-1e01207e5a64",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{city}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/cities",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities (no name)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cc2fed40-24ac-456f-a6ed-e998259e6a74",
+								"exec": [
+									"pm.test(\"It should not post city without name\", function () {",
+									"    pm.response.to.have.status(422);",
+									"",
+									"    const response = pm.response.json();",
+									"",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"errors\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/cities",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities (existing)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3483c4c-991b-470e-a04a-408ae804b9bd",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should not post city that already exists\", function () {",
+									"    pm.response.to.have.status(422);",
+									"",
+									"",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"errors\");",
+									"",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{city123}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/cities",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "38128a63-595d-440f-8fa5-4121d55a1ed1",
+								"exec": [
+									"pm.test(\"It should get the city by the given id\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"    pm.expect(response).to.have.property(\"_id\");",
+									"    pm.expect(response._id).to.equal(pm.environment.get(\"cityID\"));",
+									"",
+									"",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/cities/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{cityID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "520ab05f-c0f3-434d-a0b5-7e102f8f651f",
+								"exec": [
+									"pm.test(\"It should UPDATE the city given the ID\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"_id\");",
+									"    pm.expect(response._id).to.equal(pm.environment.get(\"cityID\"));",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"    pm.expect(response.name).to.equal(pm.environment.get(\"cityEdit\"));",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{cityEdit}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/cities/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{cityID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/cities/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "15f3e95c-ed66-4c26-8cd5-bd9b3c99ebc1",
+								"exec": [
+									"pm.test(\"It should DELETE the city given the ID\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"msg\");",
+									"    pm.expect(response.msg).to.equal(\"DELETED\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api_home}}/cities/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"cities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{cityID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c3f297ec-1700-445a-bd40-4e7f7a31401a",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should POST register\", function () {",
+									"    pm.response.to.have.status(201);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"user\");",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"    pm.environment.set(\"tokenReg\", response.token);",
+									"    pm.environment.set(\"regUserID\", response.user._id);",
+									"    pm.environment.set(\"email\", response.user.email);",
+									"",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a0b06509-77b3-418e-b2f9-ad2665669718",
+								"exec": [
+									"var freshEmail = Math.random().toString(36).substring(2,11) + '@domain.com';",
+									"pm.environment.set(\"email\", freshEmail);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/signup"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{name1}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/register",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/profile (unauthorized)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a983d7a2-c808-4b34-b384-b95f2a284c45",
+								"exec": [
+									"pm.test(\"It should not be able to consume the route - no token sent\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/profile",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login (registrated)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f620771c-4f95-460a-b4dc-0fd01fe90eb0",
+								"exec": [
+									"/*pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});*/",
+									"",
+									"const response = pm.response.json();",
+									"pm.test(\"It should GET token\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response.user).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"user\");",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"}",
+									");",
+									"",
+									"pm.environment.set(\"tokenProfile\", response.token);",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/login"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/login",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authority",
+										"value": "api-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "origin",
+										"value": "https://vue-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "https://vue-demo.daniel-avellaneda.com/login"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{Login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{LogInPass}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_home}}/login",
+									"host": [
+										"{{api_home}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 14 May 2020 03:16:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-RrPGEol7B49UjNoktcmXmZgv3bc\""
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "5931766d3a4ad43b-BUD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "cf-request-id",
+									"value": "02b2c8583e0000d43bd72d5200000001"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"e372b1b2292d0d9e6ba452d2d8a3e5f58079b8342bd68cc76b7ad5c9e569f2c8a0135fcc033c038e2a12912749784dd8c5d31aa4e8513cad2ee5f858fb1458c23a5b88718035b2f16e56ba0a5220a5f5bf6606854d6b076be9a68610b2ced7a9f9dd58ba797bc50bdad0729beadceaf0ebbc3678b483b5e6376f504a1b41143558b901e9a85e44d73904deba1d0851f97c6862ba262e361303cfd4cfb66273a23caa5aab86f9f1f06da1caf2073b45580d06c72996e2aff0fc6ce18b3cf66764\",\n    \"user\": {\n        \"_id\": \"5aa1c2c35ef7a4e97b5e995a\",\n        \"name\": \"Super Administrator\",\n        \"email\": \"admin@admin.com\",\n        \"role\": \"admin\",\n        \"verified\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "80ec54a2-e782-49af-8b74-3966d6452aa5",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should GET profile\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"email\");",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"});",
+									"pm.environment.set(\"verification\", response.verification);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenProfile}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/profile",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/profile  (json dataset)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a9b689ef-d443-48e8-a87b-13d0087f1eaa",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"var isValid = pm.iterationData.get(\"isValid\")",
+									"pm.environment.set(\"isValid\", isValid);",
+									"",
+									"var msg = pm.iterationData.get(\"msg\")",
+									"pm.environment.set(\"msg\", msg);",
+									"",
+									"if (isValid) {",
+									"pm.test(\"It should UPDATE profile\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    pm.expect(response).to.be.a('object');",
+									"",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"    pm.expect(response.name).to.eql(pm.environment.get(\"namePatch\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"urlTwitter\");",
+									"    pm.expect(response.urlTwitter).to.eql(pm.environment.get(\"urlTwitter\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"urlGitHub\");",
+									"    pm.expect(response.urlGitHub).to.eql(pm.environment.get(\"urlGitHub\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"phone\");",
+									"    pm.expect(response.phone).to.eql(pm.environment.get(\"phone\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"city\");",
+									"    pm.expect(response.city).to.eql(pm.environment.get(\"cityEdit\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"country\");",
+									"    pm.expect(response.country).to.eql(pm.environment.get(\"country\"));",
+									"});",
+									"",
+									"}",
+									"else {",
+									"    pm.test(\"It should NOT UPDATE profile \" + msg, function () {",
+									"        pm.response.to.have.status(422);",
+									"        pm.expect(response).to.be.a('object');",
+									"        pm.expect(response).to.have.property(\"errors\");",
+									"    });",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a17cdeb6-d70c-44df-8ac0-172260a33270",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenProfile}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n      \"name\": \"{{name}}\",\n      \"city\": \"{{city}}\",\n      \"country\": \"{{country}}\",\n      \"phone\": \"{{phone}}\",\n      \"urlTwitter\": \"{{urlTwitter}}\",\n      \"urlGitHub\": \"{{urlGitHub}}\"\n\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_home}}/profile",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/changePassword",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fff0afa4-2235-4b78-a806-fae8a3593ca5",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should change password\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"msg\");",
+									"    pm.expect(response.msg).to.eql(\"PASSWORD_CHANGED\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenProfile}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/forgot"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newPassword",
+									"value": "{{userPass}}",
+									"type": "text"
+								},
+								{
+									"key": "oldPassword",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/profile/changePassword",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/changePassword (wrong)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3e8a69e-228c-4116-b0ce-6d0637e4bb24",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should NOT change password\", function () {",
+									"    pm.response.to.have.status(409);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"errors\");",
+									"    pm.expect(response.errors).to.have.property(\"msg\");",
+									"    pm.expect(response.errors.msg).to.eql(\"WRONG_PASSWORD\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenProfile}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/forgot"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newPassword",
+									"value": "{{userPass}}",
+									"type": "text"
+								},
+								{
+									"key": "oldPassword",
+									"value": "{{wrongPass}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/profile/changePassword",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/changePassword (short)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b62e2d4d-b8bf-4139-b265-f48bb66d4cc6",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should NOT change a too short password\", function () {",
+									"    pm.response.to.have.status(422);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"errors\");",
+									"    pm.expect(response.errors).to.have.property(\"msg\");",
+									"    pm.expect(response.errors.msg[0].msg).to.eql(\"PASSWORD_TOO_SHORT_MIN_5\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenProfile}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/forgot"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newPassword",
+									"value": "{{shortPass}}",
+									"type": "text"
+								},
+								{
+									"key": "oldPassword",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/profile/changePassword",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"profile",
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "/users (unauthorized)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c22f949d-e324-4c80-aaf4-dded8a2f93b3",
+								"exec": [
+									"pm.test(\"It should not be able to consume the route - no token sent\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/users",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/login user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "07fa3d5f-c66a-49c6-bd03-1ceea6ea0c52",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.test(\"It should GET token as user (user)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"}",
+									");",
+									"",
+									"pm.environment.set(\"userToken\", response.token);",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "20e3e3ca-09f0-4887-9952-58c49db4cb57",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/login"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{user}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/login",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authority",
+										"value": "api-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "origin",
+										"value": "https://vue-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "https://vue-demo.daniel-avellaneda.com/login"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{Login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{LogInPass}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_home}}/login",
+									"host": [
+										"{{api_home}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 14 May 2020 03:16:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-RrPGEol7B49UjNoktcmXmZgv3bc\""
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "5931766d3a4ad43b-BUD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "cf-request-id",
+									"value": "02b2c8583e0000d43bd72d5200000001"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"e372b1b2292d0d9e6ba452d2d8a3e5f58079b8342bd68cc76b7ad5c9e569f2c8a0135fcc033c038e2a12912749784dd8c5d31aa4e8513cad2ee5f858fb1458c23a5b88718035b2f16e56ba0a5220a5f5bf6606854d6b076be9a68610b2ced7a9f9dd58ba797bc50bdad0729beadceaf0ebbc3678b483b5e6376f504a1b41143558b901e9a85e44d73904deba1d0851f97c6862ba262e361303cfd4cfb66273a23caa5aab86f9f1f06da1caf2073b45580d06c72996e2aff0fc6ce18b3cf66764\",\n    \"user\": {\n        \"_id\": \"5aa1c2c35ef7a4e97b5e995a\",\n        \"name\": \"Super Administrator\",\n        \"email\": \"admin@admin.com\",\n        \"role\": \"admin\",\n        \"verified\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/login admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1f85eaaf-faa0-4cb8-bf38-c135d279c5aa",
+								"exec": [
+									"const response = pm.response.json();",
+									"pm.test(\"It should GET token as admin (user)\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"token\");",
+									"}",
+									");",
+									"",
+									"pm.environment.set(\"adminToken\", response.token);",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c2010862-5a4c-4068-906a-626dddc114c0",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authority",
+								"value": "api-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "pragma",
+								"value": "no-cache"
+							},
+							{
+								"key": "cache-control",
+								"value": "no-cache"
+							},
+							{
+								"key": "accept",
+								"value": "application/json, text/plain, */*"
+							},
+							{
+								"key": "accept-language",
+								"value": "en"
+							},
+							{
+								"key": "user-agent",
+								"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "origin",
+								"value": "https://vue-demo.daniel-avellaneda.com"
+							},
+							{
+								"key": "sec-fetch-site",
+								"value": "same-site"
+							},
+							{
+								"key": "sec-fetch-mode",
+								"value": "cors"
+							},
+							{
+								"key": "sec-fetch-dest",
+								"value": "empty"
+							},
+							{
+								"key": "referer",
+								"value": "https://vue-demo.daniel-avellaneda.com/login"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "{{admin}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPass}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/login",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "authority",
+										"value": "api-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "pragma",
+										"value": "no-cache"
+									},
+									{
+										"key": "cache-control",
+										"value": "no-cache"
+									},
+									{
+										"key": "accept",
+										"value": "application/json, text/plain, */*"
+									},
+									{
+										"key": "accept-language",
+										"value": "en"
+									},
+									{
+										"key": "user-agent",
+										"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"
+									},
+									{
+										"key": "content-type",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "origin",
+										"value": "https://vue-demo.daniel-avellaneda.com"
+									},
+									{
+										"key": "sec-fetch-site",
+										"value": "same-site"
+									},
+									{
+										"key": "sec-fetch-mode",
+										"value": "cors"
+									},
+									{
+										"key": "sec-fetch-dest",
+										"value": "empty"
+									},
+									{
+										"key": "referer",
+										"value": "https://vue-demo.daniel-avellaneda.com/login"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{Login}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{LogInPass}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{api_home}}/login",
+									"host": [
+										"{{api_home}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 14 May 2020 03:16:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-RrPGEol7B49UjNoktcmXmZgv3bc\""
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "5931766d3a4ad43b-BUD"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "cf-request-id",
+									"value": "02b2c8583e0000d43bd72d5200000001"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"e372b1b2292d0d9e6ba452d2d8a3e5f58079b8342bd68cc76b7ad5c9e569f2c8a0135fcc033c038e2a12912749784dd8c5d31aa4e8513cad2ee5f858fb1458c23a5b88718035b2f16e56ba0a5220a5f5bf6606854d6b076be9a68610b2ced7a9f9dd58ba797bc50bdad0729beadceaf0ebbc3678b483b5e6376f504a1b41143558b901e9a85e44d73904deba1d0851f97c6862ba262e361303cfd4cfb66273a23caa5aab86f9f1f06da1caf2073b45580d06c72996e2aff0fc6ce18b3cf66764\",\n    \"user\": {\n        \"_id\": \"5aa1c2c35ef7a4e97b5e995a\",\n        \"name\": \"Super Administrator\",\n        \"email\": \"admin@admin.com\",\n        \"role\": \"admin\",\n        \"verified\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ab2ac0be-f3cc-4434-99db-0076b97c9d2a",
+								"exec": [
+									"pm.test(\"It should get all users\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response.docs).to.be.a('array');",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/users",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users?filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3736bb9-76d3-41ce-a01f-47a40261cc84",
+								"exec": [
+									"pm.test(\"It should GET users with filters\", function () {",
+									"  pm.response.to.have.status(200);",
+									"  const response = pm.response.json();",
+									"  pm.expect(response).to.be.a('object');",
+									"  pm.expect(response.docs).to.be.a('array');",
+									"",
+									"  pm.expect(response.docs).to.have.lengthOf(1);",
+									"  pm.expect(response.docs[0]).to.have.property(\"email\");",
+									"  pm.expect(response.docs[0].email).to.equal(pm.environment.get(\"admin\"));",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_home}}/users?filter={{filterUsers}}&fields=name, email, city, country, phone",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{{filterUsers}}"
+								},
+								{
+									"key": "fields",
+									"value": "name, email, city, country, phone"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users (json dataset)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9dace205-fbd3-4667-b0a1-c570544c0105",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"var isValid = pm.iterationData.get(\"isValid\")",
+									"pm.environment.set(\"isValid\", isValid);",
+									"",
+									"var msg = pm.iterationData.get(\"msg\")",
+									"pm.environment.set(\"msg\", msg);",
+									"",
+									"if (isValid) {",
+									"    pm.test(\"It should POST a user\" + msg, function () {",
+									"        pm.response.to.have.status(201);",
+									"        pm.expect(response).to.be.a('object');",
+									"        pm.expect(response).to.have.property(\"name\");",
+									"        pm.expect(response).to.have.property(\"_id\");",
+									"        pm.expect(response).to.have.property(\"email\");",
+									"        pm.expect(response).to.have.property(\"verification\");",
+									"        if (msg===\" (deleting test)\") {",
+									"            pm.environment.set(\"deleteID\", response._id);",
+									"",
+									"        }",
+									"        else {",
+									"            pm.environment.set(\"userID\", response._id);",
+									"",
+									"        }",
+									"    });",
+									"}",
+									"else {",
+									"    pm.test(\"It should NOT POST a user\" + msg, function () {",
+									"        pm.response.to.have.status(422);",
+									"        pm.expect(response).to.be.a('object');",
+									"        pm.expect(response).to.have.property(\"errors\");",
+									"    });",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "87d81a16-5be4-47b2-8c0d-9dbfd98c1e0d",
+								"exec": [
+									"var freshEmail = Math.random().toString(36).substring(2,11) + '@domain.com';",
+									"pm.environment.set(\"email\", freshEmail);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n      \"role\": \"{{role}}\",\n      \"name\": \"{{name}}\",\n      \"password\": \"{{password}}\",\n      \"city\": \"{{city}}\",\n      \"country\": \"{{country}}\",\n      \"phone\": \"{{phone}}\",\n      \"email\": \"{{email}}\"\n\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_home}}/users",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63c71c0b-eae6-4dc8-b32e-63500345a18f",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should get a user with the given ID\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"    pm.expect(response).to.have.property(\"_id\");",
+									"    pm.expect(response._id).to.equal(pm.environment.get(\"userID\"));",
+									"",
+									"});",
+									"pm.environment.set(\"iCity\", response.city);",
+									"pm.environment.set(\"role\", response.role);",
+									"pm.environment.set(\"iPhone\", response.phone);",
+									"pm.environment.set(\"iCountry\", response.country);",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api_home}}/users/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{userID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b9d79211-788e-4cd6-8fb4-8bef93b09638",
+								"exec": [
+									"pm.test(\"It should UPDATE a user given the id\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"name\");",
+									"    pm.expect(response.name).to.equal(pm.environment.get(\"namePatch\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"_id\");",
+									"    pm.expect(response._id).to.equal(pm.environment.get(\"userID\"));",
+									"",
+									"    pm.expect(response).to.have.property(\"email\");",
+									"    pm.expect(response.email).to.equal(pm.environment.get(\"email\"));",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b34e27e1-f934-4bf3-88df-1e28e4d67f3c",
+								"exec": [
+									"var freshEmail = Math.random().toString(36).substring(2, 11) + '@domain.com';",
+									"pm.environment.set(\"email\", freshEmail);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{namePatch}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "{{role}}",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "{{iPhone}}",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "{{iCity}}",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "{{iCountry}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/users/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{userID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id (existing email)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a143c50-8624-4aa1-ae82-b9e0c27fee48",
+								"exec": [
+									"pm.test(\"It should NOT UPDATE a user with email that already exists\", function () {",
+									"    pm.response.to.have.status(422);",
+									"    const response = pm.response.json();",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"errors\");",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "{{namePatch}}",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{admin}}",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "{{role}}",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "{{iPhone}}",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "{{iCity}}",
+									"type": "text"
+								},
+								{
+									"key": "country",
+									"value": "{{iCountry}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_home}}/users/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{userID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "03dd8ae9-e01d-4430-bfcf-b2190ac295a4",
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"pm.test(\"It should DELETE a user given the ID\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    pm.expect(response).to.be.a('object');",
+									"    pm.expect(response).to.have.property(\"msg\");",
+									"    pm.expect(response.msg).to.equal(pm.environment.get(\"DELETED\"));",
+									"",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api_home}}/users/:id",
+							"host": [
+								"{{api_home}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{deleteID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

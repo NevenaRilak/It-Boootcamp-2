@@ -1,0 +1,284 @@
+{
+	"id": "b8cf748b-af91-4c75-a775-c7b26bcc595e",
+	"name": "Vue-demo",
+	"values": [
+		{
+			"key": "api_home",
+			"value": "https://api-demo.daniel-avellaneda.com",
+			"enabled": true
+		},
+		{
+			"key": "name1",
+			"value": "Nevena",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "qwerty\n",
+			"enabled": true
+		},
+		{
+			"key": "email1",
+			"value": "nevenaa@gmail.com",
+			"enabled": true
+		},
+		{
+			"key": "email2",
+			"value": "nevenaaa@gmail.com",
+			"enabled": true
+		},
+		{
+			"key": "Login",
+			"value": "admin@admin.com",
+			"enabled": true
+		},
+		{
+			"key": "LogInPass",
+			"value": "12345 ",
+			"enabled": true
+		},
+		{
+			"key": "home_page",
+			"value": "https://vue-demo.daniel-avellaneda.com/",
+			"enabled": true
+		},
+		{
+			"key": "token",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "tokenReg",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "userIDreg",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "filterName",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "city",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "cityID",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "profileToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "country",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "namePatch",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "urlTwitter",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "urlGitHub ",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "phone",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "country",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "verificationUpdate",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "urlGitHub",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "urlTwitter",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "user",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "userPass",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "userID",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "freshToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "regUserID",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "verification",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "LRtoken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "cityEdit",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "adminToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "userToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "admin",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "adminPass",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "filterUsers",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "city123",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "cities",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "emailPatch",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "name1",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "iCity",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "iCountry",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "iPhone",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "role",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "email1",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "deleteID",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "DELETED",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "msg",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "isValid",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "freshEmail",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "email",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "tokenProfile",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "wrongPass",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "shortPass",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-05-18T03:42:47.794Z",
+	"_postman_exported_using": "Postman/7.24.0"
+}

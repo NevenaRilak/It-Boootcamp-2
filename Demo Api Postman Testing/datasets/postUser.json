@@ -1,0 +1,53 @@
+[
+  {
+    "role": "user",
+    "name": "Json",
+    "password": "qwerty123",
+    "city": "Barcelona",
+    "country": "Spain",
+    "phone": 123123,
+    "msg": "",
+    "isValid": true
+  },
+    {
+    "role": "user",
+    "name": "Json",
+    "password": "qwerty123",
+    "city": "Barcelona",
+    "country": "Spain",
+    "phone": 123123,
+    "msg": " (deleting test)",
+    "isValid": true
+  },
+  {
+    "role": "user",
+    "name": "",
+    "password": "qwerty123",
+    "city": "Barcelona",
+    "country": "Spain",
+    "phone": 123123,
+    "msg": " without name",
+    "isValid": false
+  },
+  {
+    "role": "user",
+    "name": "json",
+    "email": "admin@admin.com",
+    "password": "qwerty123",
+    "city": "Barcelona",
+    "country": "Spain",
+    "phone": 123123,
+    "msg": " with email that already exists",
+    "isValid": false
+  },
+  {
+    "role": null,
+    "name": "Test123456",
+    "password": "qwerty123",
+    "city": "Bucaramanga",
+    "country": "Spain",
+    "phone": 123123123,
+    "msg": " with not known role",
+    "isValid": false
+  }
+]

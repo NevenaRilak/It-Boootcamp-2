@@ -1,0 +1,39 @@
+[
+  {
+    "role": "user",
+    "name": "Test123456",
+    "password": "qwerty123",
+    "city": "Bucaramanga",
+    "country": "Colombia",
+    "phone": 123123123,
+    "urlTwitter": "https://hello.com",
+    "urlGitHub": "https://hello.io",
+    "msg": "",
+    "isValid": true
+  },
+
+  {
+    "role": "user",
+    "name": "Test123456",
+    "password": "qwerty123",
+    "city": "Bucaramanga",
+    "country": "Colombia",
+    "phone": 123123123,
+    "urlTwitter": "hello",
+    "urlGitHub": "hello",
+    "msg": "with not valid URL's",
+    "isValid": false
+  },
+  {
+    "role": "user",
+    "name": "",
+    "password": "qwerty123",
+    "city": "Bucaramanga",
+    "country": "Colombia",
+    "phone": 123123123,
+    "urlTwitter": "https://hello.com",
+    "urlGitHub": "https://hello.io",
+    "msg": "empty name",
+    "isValid": false
+  }
+]

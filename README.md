@@ -1,2 +1,2 @@
 # It-Boootcamp-2
-Selenium, Test NG, Postman
+Postman API testing with Javascript tests
